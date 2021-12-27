@@ -1,8 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
-enum PostsType {
-  NONE = 'NONE',
-}
+import { PostsType } from './type';
 
 @Entity('posts')
 export class PostsEntity {
@@ -19,14 +16,14 @@ export class PostsEntity {
   content: string;
 
   @Column({ default: '' })
-  thumb_url?: string;
+  thumbUrl?: string;
 
   @Column()
   type?: PostsType;
 
   @Column({ default: () => 'CURRENT_TIMESTAMP', type: 'timestamp' })
-  create_time?: Date;
+  createTime?: Date;
 
   @Column({ default: () => 'CURRENT_TIMESTAMP', type: 'timestamp' })
-  update_time?: Date;
+  updateTime?: Date;
 }

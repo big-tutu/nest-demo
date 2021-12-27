@@ -84,3 +84,11 @@ $ npm run test:cov
 
 #### 数据库的链接
 一般可以采用第三方提供的ORM技术来实现数据库的链接和交互，ORM（Object-Relational Mapping）就是把关系型数据库的结构映射在对象上，我们在操作数据库是只需要操作对象而不是使用Node去写底层的SQL语句，目前社区中比较主流的ORM工具就出现了Sequelize、typeORM、Prisma这些ORM框架来做这个转换, （ps：Prisma呼声很高）;
+
+#### swagger 配置
+#### 参数校验
+参数校验使用nest提供的pipe工具，ValidationPipe 配合class-validator
+
+
+### 参考文章
+[NestJs入门](https://mp.weixin.qq.com/s/oprPwqR7Xsg6TmK21CKUuw)

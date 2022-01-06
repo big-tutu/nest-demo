@@ -1,29 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller } from '@nestjs/common';
 
-export interface IUserInfo {
-  userName: string;
-  userId: number;
-}
-
-@Controller('app')
-export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  @Get('list')
-  getHello(): string {
-    return this.appService.getHello();
-  }
-
-  @Post('create')
-  create(): string {
-    return "It's ok!";
-  }
-  @Get('user')
-  getUser(): IUserInfo {
-    return {
-      userId: 1,
-      userName: 'kyrie',
-    };
-  }
-}
+@Controller()
+export class AppController {}

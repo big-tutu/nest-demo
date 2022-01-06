@@ -6,6 +6,9 @@ import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
 import envConfig from '../config/env';
 import { PostsEntity } from './posts/posts.entity';
+import { UserModule } from './user/user.module';
+import { User } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,7 +21,7 @@ import { PostsEntity } from './posts/posts.entity';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         type: 'mysql', // 数据库类型
-        entities: [PostsEntity], // 数据表实体对象
+        entities: [PostsEntity, User], // 需要注册每一个数据表实体对象 Entity
         host: configService.get('DB_HOST', 'localhost'), // 主机，默认为localhost
         port: configService.get<number>('DB_PORT', 3306), // 端口号
         username: configService.get('DB_USER', 'root'), // 用户名
@@ -29,6 +32,9 @@ import { PostsEntity } from './posts/posts.entity';
       }),
     }),
     PostsModule,
+    UserModule,
+    AuthModule,
+    // ... 引入Module
   ],
   controllers: [AppController],
   providers: [AppService],

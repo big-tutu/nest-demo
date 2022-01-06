@@ -7,9 +7,9 @@ import { TransformInterceptor } from './core/interceptor/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe()); // 注册参数验证管道
-  app.useGlobalFilters(new HttpExceptionFilter()); // 注册异常过滤器
-  app.useGlobalInterceptors(new TransformInterceptor()); // 注册接口返回拦截器
+  app.useGlobalPipes(new ValidationPipe()); // 注册所有接口入参参数验证管道
+  app.useGlobalFilters(new HttpExceptionFilter()); // 注册所有异常过滤器
+  app.useGlobalInterceptors(new TransformInterceptor()); // 注册接口返回拦截器，统一处理返回结果数据格式
 
   // 设置swagger文档
   const config = new DocumentBuilder()
@@ -23,4 +23,5 @@ async function bootstrap() {
 
   await app.listen(3333);
 }
+
 bootstrap();

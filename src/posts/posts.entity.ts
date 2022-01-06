@@ -21,9 +21,17 @@ export class PostsEntity {
   @Column()
   type?: PostsType;
 
-  @Column({ default: () => 'CURRENT_TIMESTAMP', type: 'timestamp' })
+  @Column({
+    name: 'create_time',
+    default: () => 'CURRENT_TIMESTAMP',
+    type: 'timestamp',
+  })
   createTime?: Date;
 
-  @Column({ default: () => 'CURRENT_TIMESTAMP', type: 'timestamp' })
+  @Column({
+    name: 'update_time',
+    default: () => 'CURRENT_TIMESTAMP',
+    type: 'timestamp',
+  })
   updateTime?: Date;
 }
